@@ -56,9 +56,19 @@ const pinMessage = (ctx, bot) => {
     });
 };
 
+const banUser = (ctx, bot) => {
+  if (!ctx.update.message.reply_to_message) {
+    ctx.reply("Hey! plz Specify a user to ban😁");
+    return;
+  }
+  ctx.banChatMember(ctx.update.message.reply_to_message.from.id);
+  ctx.reply("user banned!😉");
+};
+
 module.exports = {
   onUserJoin,
   onUserLeft,
   pinMessage,
   startBot,
+  banUser,
 };

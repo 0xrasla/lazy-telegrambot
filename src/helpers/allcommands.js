@@ -1,11 +1,30 @@
-let commands = [
-  "Welcome to Lazybot!💘\n Try the following comments🤗\n\n",
-  "/help : To list all available comments\n",
-  "/hug : send's you back hug gifs\n",
-  "/pin : Pin the message you reply to\n",
-  "/chatid : Get the chat id of specified chat\n",
+let settedCommands = [
+  {
+    command: "start",
+    description: "start the bot",
+  },
+  {
+    command: "help",
+    description: "list all the bot commands",
+  },
+  {
+    command: "chatid",
+    description: "send back id of the replied comment",
+  },
+  {
+    command: "pin",
+    description: "pin the comment",
+  },
+  {
+    command: "ban",
+    description: "ban a user",
+  },
+  {
+    command: "randompic",
+    description: "send a random picture",
+  },
 ];
 
 module.exports = {
-  commands,
+  settedCommands,
 };
