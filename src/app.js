@@ -27,16 +27,4 @@ bot.command("chatid", (ctx) =>
 );
 bot.command("pin", (e) => pinMessage(e, bot));
 
-bot.command("kiss", async (ctx) => {
-  ctx.replyWithVideo(await sendGif("kiss"));
-});
-
-bot.command("marriage", async (ctx) => {
-  ctx.replyWithVideo(await sendGif("marriage"));
-});
-
-bot.command("hug", async (ctx) => {
-  ctx.replyWithVideo(await sendGif("hug"));
-});
-
 module.exports = bot;
