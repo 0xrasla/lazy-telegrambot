@@ -4,10 +4,6 @@ let settedCommands = [
     description: "start the bot",
   },
   {
-    command: "help",
-    description: "list all the bot commands",
-  },
-  {
     command: "chatid",
     description: "send back id of the replied comment",
   },
