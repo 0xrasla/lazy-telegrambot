@@ -6,6 +6,7 @@ const {
   startBot,
 } = require("./helpers/userManagementActions");
 const { commands } = require("./helpers/allcommands");
+const { sendGif } = require("./helpers/utils");
 const { HTTP_API_KEY } = process.env;
 
 const bot = new Telegraf(HTTP_API_KEY);
@@ -26,13 +27,16 @@ bot.command("chatid", (ctx) =>
 );
 bot.command("pin", (e) => pinMessage(e, bot));
 
-bot.command("getall", (ctx) => {
-  console.log(ctx);
+bot.command("kiss", async (ctx) => {
+  ctx.replyWithVideo(await sendGif("kiss"));
 });
 
-bot.on("text", (ctx) => {
-  if (["Hello","Hi","Hey","Good morning","Good afternoon","Good evening","good night"].includes(ctx.))
-    ctx.reply("Hai");
+bot.command("marriage", async (ctx) => {
+  ctx.replyWithVideo(await sendGif("marriage"));
+});
+
+bot.command("hug", async (ctx) => {
+  ctx.replyWithVideo(await sendGif("hug"));
 });
 
 module.exports = bot;
