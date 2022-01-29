@@ -6,10 +6,10 @@ const app = express();
 const express = require("express");
 const bot = require("./src/app");
 
-(async () => {
-  app.get("/", (req, res) => {
-    bot.launch();
-    console.log("dd");
-    res.json({ ok: true, message: "Bot Running" });
-  });
-})();
+app.get("/", (req, res) => {
+  bot.launch();
+  console.log("dd");
+  res.json({ ok: true, message: "Bot Running" });
+});
+
+module.exports = app;
