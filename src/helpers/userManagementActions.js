@@ -36,7 +36,6 @@ const pinMessage = (ctx, bot) => {
   if (!ctx.update.message.reply_to_message) {
     ctx.reply("Hey! Specify a message to pin😂");
   }
-  console.log(ctx.update.message);
   bot.telegram
     .pinChatMessage(
       ctx.update.message.chat.id,
