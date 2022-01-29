@@ -36,10 +36,15 @@ const pinMessage = (ctx, bot) => {
   if (!ctx.update.message.reply_to_message) {
     ctx.reply("Hey! Specify a message to pin😂");
   }
+
+  if (!ctx.update.message) return;
+  if (!ctx.update.message.reply_to_message) return;
+  if (!ctx.update.message.reply_to_message.message_id) return;
+
   bot.telegram
     .pinChatMessage(
       ctx.update.message.chat.id,
-      ctx.update.message.reply_to_message.message_id
+      ctx.update.message?.reply_to_message?.message_id
     )
     .then((e) => e && ctx.reply("Chat pinned 😋"))
     .catch((e) => {
