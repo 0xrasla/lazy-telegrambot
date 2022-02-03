@@ -1,5 +1,5 @@
 const { TelegramError } = require("telegraf");
-const { sendGif } = require("./utils");
+// const { sendGif } = require("./utils");
 
 const startBot = (ctx) => {
   ctx.replyWithMarkdownV2(
@@ -8,7 +8,7 @@ const startBot = (ctx) => {
 };
 
 const onUserJoin = async (ctx) => {
-  let welcomeGif = await sendGif("welcome");
+  // let welcomeGif = await sendGif("welcome");
   ctx.replyWithVideo(welcomeGif);
 
   let { first_name } = ctx?.update?.message?.new_chat_members[0] || "";
@@ -21,7 +21,7 @@ const onUserJoin = async (ctx) => {
 };
 
 const onUserLeft = async (ctx) => {
-  let goodByeGif = await sendGif("good bye");
+  // let goodByeGif = await sendGif("good bye");
   ctx.replyWithVideo(goodByeGif);
 
   let { first_name } = ctx?.update?.message?.left_chat_member;
