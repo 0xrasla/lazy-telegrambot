@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const options = {
   webHook: {
-    port: 4002,
+    port: process.env.PORT,
   },
 };
 
