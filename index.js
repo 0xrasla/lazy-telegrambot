@@ -10,6 +10,7 @@ bot.launch({
     port: process.env.PORT,
   },
 });
+console.log("Bot launched...");
 
 // Enable graceful stop
 process.once("SIGINT", () => bot.stop("SIGINT"));
