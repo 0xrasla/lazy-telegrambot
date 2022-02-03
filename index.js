@@ -1,12 +1,16 @@
-const express = require("express");
 require("dotenv").config();
-const app = express();
+const bot = require("./app");
 
-const bot = require("./src/app");
+const url =
+  process.env.APP_URL || "https://lazybotmakemegobr.herokuapp.com:443";
 
-app.get("/", (req, res) => {
-  res.json({ ok: true, message: "Bot Running" });
+bot.launch({
+  webhook: {
+    domain: `${url}/bot${process.env.API_TOKEN}`,
+    port: process.env.PORT,
+  },
 });
 
-bot.launch();
-module.exports = app;
+// Enable graceful stop
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));
