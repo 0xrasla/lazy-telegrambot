@@ -8,9 +8,9 @@ const {
 } = require("./helpers/userManagementActions");
 const { sendRandomPic } = require("./helpers/additionActions");
 const { settedCommands } = require("./helpers/allcommands");
-const { API_TOKEN } = process.env;
+const { HTTP_API_KEY } = process.env;
 
-const bot = new Telegraf(API_TOKEN);
+const bot = new Telegraf(HTTP_API_KEY);
 
 bot.telegram.setMyCommands(settedCommands);
 
