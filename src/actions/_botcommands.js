@@ -19,6 +19,22 @@ let settedCommands = [
     command: "randompic",
     description: "send a random picture",
   },
+  {
+    command: "gif",
+    description: "send a gif based on the word you give",
+  },
+  {
+    command: "rules",
+    description: "send the rules",
+  },
+  {
+    command: "help",
+    description: "send the help",
+  },
+  {
+    command: "greet",
+    description: "send a greeting image",
+  },
 ];
 
 module.exports = {

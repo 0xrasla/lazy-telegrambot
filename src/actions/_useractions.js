@@ -1,5 +1,4 @@
-const { TelegramError } = require("telegraf");
-// const { sendGif } = require("./utils");
+const { sendGif, sendGreet } = require("./_apiactions");
 
 const startBot = (ctx) => {
   ctx.replyWithMarkdownV2(
@@ -8,7 +7,6 @@ const startBot = (ctx) => {
 };
 
 const onUserJoin = async (ctx) => {
-  // let welcomeGif = await sendGif("welcome");
   ctx.replyWithVideo(welcomeGif);
 
   let { first_name } = ctx?.update?.message?.new_chat_members[0] || "";
@@ -21,7 +19,6 @@ const onUserJoin = async (ctx) => {
 };
 
 const onUserLeft = async (ctx) => {
-  // let goodByeGif = await sendGif("good bye");
   ctx.replyWithVideo(goodByeGif);
 
   let { first_name } = ctx?.update?.message?.left_chat_member;
@@ -69,10 +66,40 @@ const banUser = (ctx, bot) => {
   ctx.reply("user banned!😉");
 };
 
+const sendingGifs = async (ctx) => {
+  let _msg = ctx.message.text.split("/gif ")[1];
+  if (!_msg) {
+    ctx.reply("Hey! Give a word to get some gif😂");
+    return;
+  }
+  ctx.replyWithVideo(await sendGif(_msg));
+};
+
+const sendRandomPic = (ctx) => {
+  return ctx.replyWithPhoto(
+    { url: "https://picsum.photos/300/200/?random" },
+    {
+      caption: "Yo! a better pic for you!😁😍",
+    }
+  );
+};
+
+const greetWithImage = async (ctx) => {
+  let _msg = ctx.message.text.split("/greet ")[1];
+  if (!_msg) {
+    ctx.reply("Specify what greeting you want 😚");
+    return;
+  }
+  ctx.replyWithPhoto(await sendGreet(_msg));
+};
+
 module.exports = {
   onUserJoin,
   onUserLeft,
   pinMessage,
   startBot,
   banUser,
+  sendingGifs,
+  sendRandomPic,
+  greetWithImage,
 };

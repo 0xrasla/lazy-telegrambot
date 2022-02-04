@@ -5,9 +5,11 @@ const {
   pinMessage,
   startBot,
   banUser,
-} = require("./helpers/userManagementActions");
-const { sendRandomPic } = require("./helpers/additionActions");
-const { settedCommands } = require("./helpers/allcommands");
+  sendingGifs,
+  sendRandomPic,
+  greetWithImage,
+} = require("./actions/_useractions");
+const { settedCommands } = require("./actions/_botcommands");
 const { API_TOKEN } = process.env;
 
 const bot = new Telegraf(API_TOKEN);
@@ -15,7 +17,6 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setMyCommands(settedCommands);
 
 bot.start(startBot);
-
 bot.on("new_chat_members", onUserJoin);
 bot.on("left_chat_member", onUserLeft);
 
@@ -31,5 +32,7 @@ bot.command("pin", (e) => pinMessage(e, bot));
 bot.command("ban", banUser);
 
 bot.command("randompic", sendRandomPic);
+bot.command("gif", async (ctx) => sendingGifs(ctx));
+bot.command("greet", async (ctx) => greetWithImage(ctx));
 
 module.exports = bot;
