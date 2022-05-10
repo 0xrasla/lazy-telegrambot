@@ -25,7 +25,7 @@ let settedCommands = [
   },
   {
     command: "rules",
-    description: "send the rules",
+    description: "send the rules of the group",
   },
   {
     command: "help",
@@ -34,6 +34,18 @@ let settedCommands = [
   {
     command: "greet",
     description: "send a greeting image",
+  },
+  {
+    command: "git",
+    description: "send the git Information",
+  },
+  {
+    command: "time",
+    description: "send the current time",
+  },
+  {
+    command: "food",
+    description: "send Information About a food",
   },
 ];
 
