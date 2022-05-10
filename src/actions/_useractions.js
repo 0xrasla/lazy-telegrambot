@@ -102,7 +102,7 @@ const sendRules = (ctx) => {
 
 const sendHelp = (ctx) => {
   ctx.replyWithMarkdownV2(
-    "*/help*\n\n1 /rules\n2 /chatid\n3 /pin\n4 /ban\n5 /randompic\n6 /gif\n7 /greet\n8 /git\n9 /time\n10 /food"
+    "*/help*\n\n1 /rules\n2 /chatid\n3 /pin\n4 /ban\n5 /randompic\n6 /gif\n7 /greet\n8 /git\n9 /time\n10 /food \n11 /insta \n12 /yt"
   );
 };
 
@@ -168,6 +168,44 @@ const getRandomFood = async (ctx) => {
   );
 };
 
+const getInstagramDetails = async (ctx) => {
+  let _msg = ctx.message.text.split("/insta ")[1];
+  if (!_msg) {
+    ctx.reply("Specify a username 😚");
+    return;
+  }
+  try {
+    let instagramUser = await axios
+      .get(`https://www.instagram.com/${_msg}/?__a=1`)
+      .then((res) => res.data);
+    if (!instagramUser.graphql.user.edge_owner_to_timeline_media.edges) {
+      ctx.reply("No instagram user found 😞");
+      return;
+    }
+
+    ctx.replyWithPhoto(
+      {
+        url: instagramUser.graphql.user.edge_owner_to_timeline_media.edges[0]
+          .node.display_url,
+      },
+      {
+        caption: "Latest Post",
+      }
+    );
+    ctx.reply(
+      `*Instagram Details*\n\nUsername: ${instagramUser.graphql.user.username}\n\nBio: ${instagramUser.graphql.user.biography}\n\nFollowers: ${instagramUser.graphql.user.edge_followed_by.count}\n\nFollowing: ${instagramUser.graphql.user.edge_follow.count}`
+    );
+  } catch (e) {
+    ctx.reply("No instagram user found 😞");
+    return;
+  }
+};
+
+const downloadYoutubeVideo = async (ctx) => {
+  // need to be done soon
+  ctx.reply("Not available yet 😞");
+};
+
 module.exports = {
   onUserJoin,
   onUserLeft,
@@ -182,4 +220,6 @@ module.exports = {
   getCurrentTimeQuote,
   getGithubDetails,
   getRandomFood,
+  getInstagramDetails,
+  downloadYoutubeVideo,
 };

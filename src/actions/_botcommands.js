@@ -47,6 +47,14 @@ let settedCommands = [
     command: "food",
     description: "send Information About a food",
   },
+  {
+    command: "insta",
+    description: "send Information About an Instagram Account",
+  },
+  {
+    command: "yt",
+    description: "send Information About a Youtube Video",
+  },
 ];
 
 module.exports = {

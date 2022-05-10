@@ -13,6 +13,8 @@ const {
   getCurrentTimeQuote,
   getGithubDetails,
   getRandomFood,
+  getInstagramDetails,
+  downloadYoutubeVideo,
 } = require("./actions/_useractions");
 const { settedCommands } = require("./actions/_botcommands");
 const { API_TOKEN } = process.env;
@@ -44,5 +46,7 @@ bot.command("greet", async (ctx) => greetWithImage(ctx));
 bot.command("time", async (ctx) => getCurrentTimeQuote(ctx));
 bot.command("git", async (ctx) => getGithubDetails(ctx));
 bot.command("food", async (ctx) => getRandomFood(ctx));
+bot.command("insta", async (ctx) => getInstagramDetails(ctx));
+bot.command("yt", async (ctx) => downloadYoutubeVideo(ctx));
 
 module.exports = bot;
